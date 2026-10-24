@@ -147,17 +147,18 @@
 
 
   // contact form (opens the visitor's mail app)
-  var CONTACT_EMAIL='mr444110911@gmail.com';
+    var CONTACT_EMAIL='mr444110911@gmail.com';
   var cform=$('cform');
   if(cform)cform.addEventListener('submit',function(e){
     e.preventDefault();
     var n=$('f-name').value.trim(),m=$('f-msg').value.trim(),note=$('f-note');
     if(!n||!m)return;
     var body='Hi Faizan,\n\n'+m+'\n\nFrom: '+n;
-    var url='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Freelance enquiry from '+n)+'&body='+encodeURIComponent(body);
+    var url='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(CONTACT_EMAIL)+'&su='+encodeURIComponent('Freelance enquiry from '+n)+'&body='+encodeURIComponent(body);
     try{navigator.clipboard.writeText(body).catch(function(){})}catch(x){}
-    try{window.open(url,'_blank')||(location.href=url)}catch(x){}
-    note.textContent='Your mail app should open now. If it does not, your message is copied, so paste it into an email to '+CONTACT_EMAIL+'.';
+    var w=null;try{w=window.open(url,'_blank')}catch(x){}
+    if(!w){try{location.href=url}catch(x){}}
+    note.textContent='Gmail should open with your message ready. Press Send there to deliver it. If it does not open, your message is copied, so paste it into an email to '+CONTACT_EMAIL+'.';
   });
 
   // floating nav pill on scroll

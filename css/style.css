@@ -643,3 +643,5 @@ html.cur a,html.cur a *,html.cur button,html.cur button *,html.cur .btn,html.cur
 
 /* ===== warm light theme: ivory + bronze ===== */
 :root[data-theme="light"]{--bg:#faf8f4;--surface:#ffffff;--fg:#1c1917;--muted:#57534e;--line:#e7e2d9;--accent:#a16207;--accent2:#78350f;--accent-ink:#ffffff;--tag:#f3efe6;--lime:#a16207;--coral:#a16207;--ink:#1c1917;--accent-soft:rgba(161,98,7,.08)}
+
+html.cur :is(p,h1,h2,h3,h4,li,span,code,pre,label,figcaption,small,.mono):not(a *):not(button *):not(a):not(button),html :is(p,h1,h2,h3,h4,li,span,code,pre,label,figcaption,small,.mono):not(a *):not(button *):not(a):not(button){cursor:text!important}
