@@ -645,3 +645,6 @@ html.cur a,html.cur a *,html.cur button,html.cur button *,html.cur .btn,html.cur
 :root[data-theme="light"]{--bg:#faf8f4;--surface:#ffffff;--fg:#1c1917;--muted:#57534e;--line:#e7e2d9;--accent:#a16207;--accent2:#78350f;--accent-ink:#ffffff;--tag:#f3efe6;--lime:#a16207;--coral:#a16207;--ink:#1c1917;--accent-soft:rgba(161,98,7,.08)}
 
 html.cur :is(p,h1,h2,h3,h4,li,span,code,pre,label,figcaption,small,.mono):not(a *):not(button *):not(a):not(button),html :is(p,h1,h2,h3,h4,li,span,code,pre,label,figcaption,small,.mono):not(a *):not(button *):not(a):not(button){cursor:text!important}
+
+/* transparent glass navbar on scroll */
+nav.scrolled .wrap{background:color-mix(in srgb,var(--surface) 28%,transparent);-webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);border-color:color-mix(in srgb,var(--fg) 14%,transparent);box-shadow:0 10px 30px -16px rgba(0,0,0,.35)}
