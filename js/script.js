@@ -61,6 +61,22 @@
       if(ci>=w.length){del=true;return setTimeout(tick,1700)}
       setTimeout(tick,95);
     })();
+      // ---------- mobile menu (drawer from the left) ----------
+  (function(){
+    var b=$('burger'),d=$('drawer'),s=$('scrim'),x=$('dclose');
+    if(!b||!d||!s)return;
+    function setMenu(o){
+      d.classList.toggle('open',o);s.classList.toggle('open',o);
+      d.setAttribute('aria-hidden',o?'false':'true');b.setAttribute('aria-expanded',o?'true':'false');
+      document.documentElement.style.overflow=o?'hidden':'';
+    }
+    b.addEventListener('click',function(){setMenu(!d.classList.contains('open'))});
+    s.addEventListener('click',function(){setMenu(false)});
+    if(x)x.addEventListener('click',function(){setMenu(false)});
+    [].slice.call(d.querySelectorAll('.dl')).forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+    addEventListener('resize',function(){if(innerWidth>700)setMenu(false)});
+  })();
   }
 
   // name scramble
