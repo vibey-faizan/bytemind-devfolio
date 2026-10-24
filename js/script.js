@@ -171,6 +171,29 @@
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform='perspective(800px) rotateY('+(x*8)+'deg) rotateX('+(-y*8)+'deg)'});
     c.addEventListener('pointerleave',function(){c.style.transform=''});
   });
+    // ---------- avatar: eyes + face follow the cursor ----------
+  (function(){
+    var av=$('avatar');if(!av||reduce)return;
+    var head=$('avHead'),face=$('avFace'),body=$('avBody'),pL=$('pL'),pR=$('pR'),sL=$('sL'),sR=$('sR');
+    var tx=0,ty=0,cx=0,cy=0,raf=0;
+    function put(el,x,y){el.style.transform='translate('+x.toFixed(2)+'px,'+y.toFixed(2)+'px)'}
+    function draw(){
+      cx+=(tx-cx)*.18;cy+=(ty-cy)*.18;
+      put(pL,cx*6,cy*6);put(pR,cx*6,cy*6);put(sL,cx*6,cy*6);put(sR,cx*6,cy*6);
+      put(face,cx*7,cy*5);
+      head.style.transform='translate('+(cx*3).toFixed(2)+'px,'+(cy*2).toFixed(2)+'px) rotate('+(cx*5).toFixed(2)+'deg)';
+      put(body,cx*1.5,0);
+      raf=(Math.abs(tx-cx)>.002||Math.abs(ty-cy)>.002)?requestAnimationFrame(draw):0;
+    }
+    function aim(x,y){
+      var r=av.getBoundingClientRect(),dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2),d=Math.max(120,Math.hypot(dx,dy));
+      tx=Math.max(-1,Math.min(1,dx/d*Math.min(1,Math.hypot(dx,dy)/160)));
+      ty=Math.max(-1,Math.min(1,dy/d*Math.min(1,Math.hypot(dx,dy)/160)));
+      if(!raf)raf=requestAnimationFrame(draw);
+    }
+    addEventListener('pointermove',function(e){aim(e.clientX,e.clientY)},{passive:true});
+    document.addEventListener('pointerleave',function(){tx=0;ty=0;if(!raf)raf=requestAnimationFrame(draw)});
+  })();
 
   // ---------- Byte Runner (inline console) ----------
   var cv=$('gc'),cx2=cv.getContext('2d'),gsEl=$('gs'),gbEl=$('gb'),consoleEl=$('console');
