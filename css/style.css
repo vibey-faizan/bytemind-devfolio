@@ -715,3 +715,5 @@ nav.scrolled .theme{width:44px;height:44px}
   .di svg{width:20px;height:20px}
   .dl:active{background:var(--tag)}
 }
+
+.proj .links a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
