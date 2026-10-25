@@ -717,3 +717,4 @@ nav.scrolled .theme{width:44px;height:44px}
 }
 
 .proj .links a{color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+  html:not([data-theme]){background:#050505}
