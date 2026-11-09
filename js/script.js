@@ -53,7 +53,7 @@
   // typing line
   var tp=$('type');
   if(tp&&!reduce){
-    var words=['Java apps','Python projects','graphics','reliable work','and more'],wi=0,ci=words[0].length,del=true;
+    var words=['Interactive Websites & Software Applications','Python projects','graphics','reliable work','and more'],wi=0,ci=words[0].length,del=true;
     (function tick(){
       var w=words[wi];
       if(del){ci--;tp.textContent=w.slice(0,ci);if(ci<=0){del=false;wi=(wi+1)%words.length;return setTimeout(tick,260)}return setTimeout(tick,45)}
